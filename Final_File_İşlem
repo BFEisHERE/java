@@ -1,0 +1,43 @@
+package final_tekrar;
+import java.io.*;
+
+
+public class Final_tekrar {
+
+    public static void main(String[] args) throws Exception {
+
+        File dosya = new File("Deneme1.txt");
+        System.out.println("Dosya var mı? " + dosya.exists());
+        System.out.println("Dosya Uzunluğu = " + dosya.length());
+        System.out.println("Dosya okunabilir mi? " + dosya.canRead());
+        System.out.println("dosya yazılabilir mi?" + dosya.canWrite());
+        System.out.println("Bir dizin mi? "+dosya.isDirectory());
+        System.out.println("Bir dosya mı? "+dosya.isFile());
+        System.out.println("Mutlak mı? " + dosya.isAbsolute());
+        System.out.println("Gizli mi? "+dosya.isHidden());
+        System.out.println("Mutlak yolu = " + dosya.getAbsolutePath());
+        System.out.println("Degisiklik tarihi " + new java.util.Date(dosya.lastModified()));
+        
+        //dosya yazma
+        try ( // dosya oluşturuldu
+                java.io.PrintWriter cikis = new java.io.PrintWriter(dosya)) {
+            //dosya yazma
+            cikis.print("Burak Erkemen Algo");
+            cikis.println(85);
+            cikis.print("Muhammed Şimşek Algo");
+            cikis.println(90);
+            // dosya kapatma
+        }
+        
+       // veri okuma
+            FileReader giris = new FileReader(dosya);
+            String line;
+            BufferedReader br = new BufferedReader(giris);
+            while ((line = br.readLine()) != null) {
+                System.out.println(line); 
+            } 
+            br.close(); 
+       
+       
+    }
+}
